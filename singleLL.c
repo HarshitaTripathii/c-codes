@@ -1,67 +1,70 @@
-#include<stdio.h>
-#include<stdlib.h>
-struct node{
+#include <stdio.h>
+#include <stdlib.h>
+struct node
+{
     int data;
     struct node *link;
 };
-struct node*head=NULL;
+struct node *head = NULL;
 
 void insertion(int data)
 {
-    if(head==NULL)
+    if (head == NULL)
     {
-        head=(struct node*)malloc(sizeof(struct node));
-        head->data=data;
-        head->link=NULL;
+        head = (struct node *)malloc(sizeof(struct node));
+        head->data = data;
+        head->link = NULL;
     }
     else
-    {struct node *ptr=head;
-    while(ptr->link!=NULL)
     {
-        ptr=ptr->link;
+        struct node *ptr = head;
+        while (ptr->link != NULL)
+        {
+            ptr = ptr->link;
+        }
+        struct node *newNode = (struct node *)malloc(sizeof(struct node));
+        newNode->data = data;
+        newNode->link = NULL;
+        ptr->link = newNode;
     }
-    struct node*newNode=(struct node*)malloc(sizeof(struct node));
-    newNode->data=data;
-    newNode->link=NULL;
-    ptr->link=newNode;}
 }
 void deletion()
 {
-   struct node *ptr1=head;
-   struct node *ptr2=head;
-   while(ptr1->link!=NULL)
-   {
-    ptr2=ptr1;
-    ptr1=ptr1->link;
+    struct node *ptr1 = head;
+    struct node *ptr2 = head;
+    while (ptr1->link != NULL)
+    {
+        ptr2 = ptr1;
+        ptr1 = ptr1->link;
     }
-    ptr2->link=NULL;
+    ptr2->link = NULL;
     free(ptr1);
-    ptr1=NULL;
+    ptr1 = NULL;
 }
 
 void print()
 {
-struct node *ptr=head;  
-while(ptr!=NULL)
-{
-printf("%d\n", ptr->data);
-ptr=ptr->link;
-}
-}
-void reverse(){
-    struct node *temp=NULL;
-    struct node *temp2=head->link;
-    while(temp2!=NULL)
+    struct node *ptr = head;
+    while (ptr != NULL)
     {
-        head->link=temp;
-        temp=head;
-        head=temp2;
-        temp2=temp2->link;
+        printf("%d\n", ptr->data);
+        ptr = ptr->link;
     }
-    head->link=temp;
-    
 }
-void  main()
+void reverse()
+{
+    struct node *temp = NULL;
+    struct node *temp2 = head->link;
+    while (temp2 != NULL)
+    {
+        head->link = temp;
+        temp = head;
+        head = temp2;
+        temp2 = temp2->link;
+    }
+    head->link = temp;
+}
+void main()
 {
     insertion(45);
     insertion(55);
