@@ -5,16 +5,17 @@ struct node{
     struct node*prev;
     struct node*next;
 };
-struct node * add_Node_to_empty(struct node*head, int data)
+struct node *head=NULL;
+void add_Node_to_empty(int data)
 {
    struct node* temp=(struct node*)malloc(sizeof(struct node));
    temp->prev=NULL;
    temp->data=data;
    temp->next=NULL;
    head=temp;
-   return head;
+   
 }
-struct node* addB(struct node*head, int data)
+void addB(int data)
 {
     struct node*temp=(struct node*)malloc(sizeof(struct node));
     temp->prev=NULL;
@@ -24,9 +25,9 @@ struct node* addB(struct node*head, int data)
     temp->next=head;
     head->prev=temp;
     head=temp;
-    return head;
+   
 }
-void insertionE(struct node*head,int data)
+void insertionE(int data)
 {
     struct node*ptr=head;
     struct node*newNode=(struct node*)malloc(sizeof(struct node));
@@ -41,7 +42,7 @@ void insertionE(struct node*head,int data)
     newNode->prev=ptr;
 
 }
-void insertPos(struct node*head,int data,int pos)
+void insertPos(int data,int pos)
 {
     struct node*ptr=head;
     pos--;
@@ -57,7 +58,51 @@ void insertPos(struct node*head,int data,int pos)
     newNode->next=ptr->next;
     ptr->next=newNode;
 }
-void print(struct node *head)
+void deleteB(){
+    struct node *ptr=head;
+    head=head->next;
+    head->prev=NULL;
+    free(ptr);
+    ptr=NULL;
+}
+void deleteE(){
+    struct node*ptr=head;
+    while(ptr->next->next!=NULL)
+    {
+        ptr=ptr->next;
+    }
+    free(ptr->next);
+    ptr->next=NULL;
+}
+void deletePos(int pos)
+{
+    if(pos==1)
+    {
+        deleteB();
+    }
+    struct node *ptr1=head;
+    // ptr1=head;
+    // pos--;
+    while(pos!=1)
+    {
+        ptr1=ptr1->next;
+        pos--;
+    }
+    if(ptr1->next==NULL){
+        deleteE();
+    }
+    else
+    {
+    struct node*ptr=NULL; 
+    ptr=ptr1->prev; 
+    // linking the end nodes
+    ptr->next=ptr1->next;
+    ptr1->next->prev=ptr;
+    free(ptr1);
+    ptr1=NULL;
+    }
+}
+void print()
 {
   struct node*ptr=head;
   while(ptr!=NULL)
@@ -67,14 +112,32 @@ void print(struct node *head)
   }
 }
 void main()
-{
-    struct node* head=NULL;
-    head=add_Node_to_empty(head,12);
-    head=addB(head,24);
-    insertionE(head,36);
-    insertPos(head,48,2);
-    insertPos(head,48,4);
-    insertPos(head,1,2);
-    print(head);
-    // printf("%d\n", head->next->next->data);
+{int element,i;
+    for(i=0;i<5;i++)
+    {
+        if(head==NULL)
+        {
+            printf("enter first element\n");
+            scanf("%d",&element);
+            add_Node_to_empty(element);
+        }
+        
+        printf("enter first element\n");
+        scanf("%d",&element);
+        insertionE(element);
+
+        
+    }
+    // add_Node_to_empty(12);
+    // addB(24);
+    // insertionE(36);
+    // // deleteB();
+    // insertPos(48,2);
+    // insertPos(98,4);
+    // insertPos(1,2);
+    // deleteE();
+    deletePos(1);
+    // printf("\n%d",head->data);
+
+    print();
 }
