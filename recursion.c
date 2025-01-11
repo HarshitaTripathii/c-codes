@@ -136,9 +136,6 @@ int stairPath2(int n){
 }
 
 int Maze(int n, int m){
-    // if (n<=3 &&  m==1 || m<=3 && n==1 ){
-    //     return 1;
-    // }
     if (n==1 || m==1)
     {
         return 1;
@@ -146,12 +143,43 @@ int Maze(int n, int m){
     int result=Maze(n-1,m)+Maze(n,m-1);
     return result;
 }
-// int maze(int row, int col){
-//     int left=row;
-//     int up=col;
+void pip(int n)
+{
+  if(n==0){
+    return;
+  }
+  printf("Pre %d\n", n);
+  pip(n-1);
+  printf("In %d\n", n);
+  pip(n-1);
+  printf("Post %d\n", n);
+  return;
+}
 
-// }
+void zigzag(int n)
+{
+  if(n==0){
+    return;
+  }
+  printf("%d", n);
+  zigzag(n-1);
+  printf("%d", n);
+  zigzag(n-1);
+  printf("%d", n);
+  return;
+}
+void towerh(int n, char s, char h, char d)
+{
+    if (n==1){
+        printf("%c to %c\n", s, d);
+        return;
+    }
+    towerh(n-1,s,d,h);
+    printf("%c to %c\n", s,d);
+    towerh(n-1,h,s,d);
+    return;
 
+}
 int  logBigPower(int base, int index)
 {
     if(index==1)
@@ -183,7 +211,12 @@ void main()
     // printf("%d\n", stairPath1(5));
     // printf("%d\n", stairPath2(2));
     // printf("%d\n", logBigPower(2,10));
-        printf("%d\n", Maze(5,6));
+        // printf("%d\n", Maze(3,3));
+        // printf("%d\n", pip(2));
+        // pip(2);
+        // pip(3);
+        // zigzag(3);
+        towerh(3, 'A', 'B', 'C');
 
 
 }
