@@ -1,9 +1,66 @@
 #include<iostream>
 using namespace std;
 
+void greet(string name)
+{
+  cout << "hello " << name;
+}
+
+int conAdd(int num)
+{
+  cout << num << endl;
+  num=num+5;
+  cout << num << endl;
+  num=num+5;
+  cout << num << endl;
+}
+void changesVal(string s)
+{
+  cout <<  s << endl;
+  s[0]='t';
+  cout <<  s << endl;
+
+}
+void changesRefer(string &s)
+{
+  cout <<  s << endl;
+  s[0]='t';
+  cout <<  s << endl;
+
+}
+
+void changeArray(int a[])
+{
+  a[0]=a[0]+100;
+  cout << "outside main " << a[0]<< endl;
+}
 int main()
 {
-    /*
+  int arr[4]={10,20,30,40};
+  cout << "Without  main " << arr[0]<< endl;
+
+
+  changeArray(arr);
+  cout << "Inside main " << arr[0]<< endl;
+
+  /*
+  // greet("Harshita");
+
+  int number=5;
+  conAdd(number);  // PASS BY VALUE
+  cout << number<< endl;
+  string str="harshita";
+  // CALL BY VALUE   (making a copy of variable it is passed)
+  changesVal(str);
+  cout << str << endl;
+
+  //   CALL BY REFERENCE 
+  changesRefer(str);
+  cout << str << endl;
+  */
+
+
+/*
     cout<<"hello harshita"  << "\n";
     cout<<"hello harshita"  << endl << "what you doing" <<  endl;
     cout<< "good evening" <<  endl << "new line";
@@ -43,6 +100,8 @@ string str;
 getline(cin, str);
 cout<< "the string is " << str;    // OUTPUT : the string is heya harshita, how you doing ?
 */
+
+/*
 int age;
 cin >> age;
 if(age>=18){
@@ -51,5 +110,88 @@ if(age>=18){
 else{
     cout << "not eligible";
 }
-    return 0;
+*/
+
+
+/*
+//SWTICH CASE 
+int num;
+cout << "enter number" << endl;
+cin>> num;
+switch(num)
+{
+  case 1:
+     cout << "hello 1";
+     break;
+
+  case 2:
+      cout << "hello 2";
+      break;
+
+
+  case 3:
+      cout << "hello 3";
+      break;
+
+  default:
+       cout << "enter valid num";
+       break;
+  cout << "check inside siwtch";
+}
+cout << "  check outside switch";
+*/
+
+/*
+char ch;
+cin >> ch;
+cout << "value of chracter is " << ch;
+*/
+
+/*
+// 1D ARRAY
+int a[3];
+cin >> a[0] >> a[1] >> a[2];
+ a[2]=a[2]+10;
+ cout << a[2];
+ */
+
+/*
+// 2D ARRAY
+int b[2][3];
+cin >> b[1][1];
+cout << "b[0][0] " << b[0][0] << " b[1][1] "  << b[1][1];
+*/
+
+/*
+// STRINGS 
+string s;
+s="Harshita";
+int len=s.size();
+cout << len << endl << s[1] << endl << s[len-1] << endl << sizeof(s);
+*/
+
+/*
+// WHILE LOOP
+int i=0;
+while(i<=5)
+{
+  cout << i << endl;
+  i=i+1;
+}
+
+// DO WHILE LOOP
+
+int j=0;
+do{
+  cout << j << endl;
+  j=j+1;
+} while (j<=4);
+cout << j << endl;
+*/
+
+
+
+
+
+return 0;
 }
