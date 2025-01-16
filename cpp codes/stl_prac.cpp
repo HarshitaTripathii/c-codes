@@ -26,9 +26,13 @@ int main()
    v.push_back(1);
    v.emplace_back(2);
 
-   // difeerence b/w emplace and push is in SYNTAX.
+   // difeerence b/w emplace and push is in SYNTAX while pushing a pair.
    vector<pair<int,int>>vec;
    vec.push_back({3,9});
    vec.emplace_back(1,2);
+
+   // container having 100, 5 times as elements
+   vector<int> v1(5,100);
+   
 
 }

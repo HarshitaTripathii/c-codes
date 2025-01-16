@@ -40,9 +40,70 @@ void numberCrown(int n) {
         cout << endl;
     }
 }
+void symmetry(int n) {
+    for (int i=1;i<=n; i++)
+    {
+        for (int j=1;j<=2*n;j++)
+        {
+            if(j>=(n+2-i) && j<=(n+i-1))
+            {
+                cout << " ";
+            }
+            else {
+                cout << "*";
+            }
+        }
+        cout << endl;
+    }
+    for (int i=1;i<=n; i++)
+    {
+        for (int j=1;j<=2*n;j++)
+        {
+            if(j+i>2*i && j+i<2*n+1)
+            {
+                cout << " ";
+            }
+            else {
+                cout << "*";
+            }
+        }
+        cout << endl;
+    }
+}
+void symmetry1(int n) {
+    for (int i=1;i<=2*n-1;i++)
+    {
+        for(int j=1;j<=2*n;j++)
+        {
+            if(i<=n)
+            {
+                if((i+j)>=2*i+1 && (i+j)<=2*n)
+                {
+                    cout << " ";
+                }
+                else {
+                    cout << "*";
+                }
+            }
+            else{
+                if((i+j) >= 2*n+1 && (i+j)<=2*i)
+                {
+                    cout << " ";
+                }
+                else{
+                    cout << "*";
+                }
+            }
+
+        }
+        cout << endl;
+    }
+}
 int main()
 {
 //  p1(4);
-numberCrown(6);
+// numberCrown(6);
+// symmetry(3); 
+symmetry1(6);
  return 0;
 }
