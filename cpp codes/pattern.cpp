@@ -99,11 +99,28 @@ void symmetry1(int n) {
         cout << endl;
     }
 }
+void getNumberPattern(int n) {
+    for(int i=1;i<2*n;i++)
+    {
+        for(int j=1;j<2*n;j++)
+        {
+            int top=i-1;
+            int down =(2*n-1)-i;
+            int left=j-1;
+            int right=(2*n-1)-j;
+
+            cout << n-min(min(top,down), min(left,right));
+        }
+        cout << endl;
+    }
+
+}
 int main()
 {
 //  p1(4);
 // numberCrown(6);
 // symmetry(3); 
-symmetry1(6);
+// symmetry1(6);
+getNumberPattern(4);
  return 0;
 }
