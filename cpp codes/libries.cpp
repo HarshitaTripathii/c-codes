@@ -95,6 +95,7 @@ for(auto it1 : v)
 }
 */
 
+/*
 // above shows how to user input vector values but just like arrays, we can do this.
 
 vector<int> v={12,13,14,15,16};
@@ -114,6 +115,22 @@ for(auto it1 : v)
 {
    cout << it1 << " ";
 }
+v.emplace_back(2);
+cout << endl << "after erasing"<< endl;
+for(auto it1 : v)
+{
+   cout << it1 << " ";
+}
+*/
+
+set<int> st;
+st.insert(5);
+st.insert(3);
+st.insert(2);
+st.insert(1);
+auto it=st.find(3);
+cout << *it<< endl;
+cout << st.size();
 
 
 
