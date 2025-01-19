@@ -129,8 +129,56 @@ st.insert(3);
 st.insert(2);
 st.insert(1);
 auto it=st.find(3);
-cout << *it<< endl;
-cout << st.size();
+// cout << *it<< endl;
+// cout << st.size();
+// cout << st.count(4)<< endl;   // 1 : if exists, 0 : if not.
+// for(auto it : st)
+// {
+//    cout << it<< endl;
+// } 
+
+/*
+//suppose i want to delete 3 from set
+auto e=st.find(3);  // find return the iterator pointing to element itself
+cout << "e = " << *e<< endl;
+st.erase(e);
+ for(auto it : st)
+{
+   cout << it<< endl;
+}
+*/
+
+// upper bound and lower bound in cpp
+
+/*
+// for 1st occurence
+int arr[]={1,4,4,4,4,9,9,10,11};
+int *a=arr;
+int n=sizeof(arr)/sizeof(arr[0]);
+int indx=lower_bound(a,a+n,12)-a;
+if (indx != n and arr[indx]==12 )
+{
+   cout << indx;
+}
+else{
+   cout << -1;
+}
+*/
+
+// for last occurence 
+int arr[]={1,4,4,4,4,9,9,10,11};
+int *a=arr;
+int n=sizeof(arr)/sizeof(arr[0]);
+int indx=upper_bound(a,a+n,12)-a;
+indx--;
+if (indx>0 and arr[indx]==12 )
+{
+   cout << indx;
+}
+else{
+   cout << -1;
+}
+
 
 
 
