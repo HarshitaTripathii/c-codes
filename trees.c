@@ -41,10 +41,40 @@ struct node *Moving_root = NULL;
 //         }
 //     }
 // }
+
+
+void PostOrder(struct node *root)
+{
+    if (root != NULL)
+    {
+        PostOrder(root->left);
+        PostOrder(root->right);
+        printf("%d\n", root->data);
+    }
+};
+
+void Inorder(struct node *root_Node)
+{
+    if (root_Node != NULL)
+    {
+        Inorder(root_Node->left);
+        printf("%d\t", root_Node->data);
+        Inorder(root_Node->right);
+    }
+}
+void PreOrder(struct node *root_Node)
+{
+    if (root_Node != NULL)
+    {
+        printf("%d\t", root_Node->data);
+        PreOrder(root_Node->left);
+        PreOrder(root_Node->right);
+    }
+};
 void linkage(struct node * root_Node, struct node *left_Node, struct node *right_Node)
 {
    root_Node->left=left_Node;
-   root_Node->right=root_Node;
+   root_Node->right=right_Node;
 }
 struct node *create(int data)
 {
@@ -68,5 +98,10 @@ void main()
     linkage(root,l1,r1);
     linkage(l1,l2,lr2);
     linkage(r1,NULL,r2 );
+    printf("Inorder is below \n");
+
+    Inorder(root);
+    printf("\npreoder is below \n");
+    PreOrder(root);
 
 }
