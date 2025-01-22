@@ -6,7 +6,7 @@ struct node
     struct node *left;
     struct node *right;
 };
-struct node *p1=NULL;
+struct node *p1 = NULL;
 // void PreOrder(struct node *root);
 // struct node *root = NULL;
 // void insertion(int data, int choice)
@@ -34,7 +34,7 @@ void PreOrder(struct node *root)
 {
     if (root != NULL)
     {
-        printf("%d\n", root->data);
+        printf("%d\t", root->data);
         PreOrder(root->left);
         PreOrder(root->right);
     }
@@ -46,7 +46,7 @@ void PostOrder(struct node *root)
     {
         PostOrder(root->left);
         PostOrder(root->right);
-        printf("%d\n", root->data);
+        printf("%d\t", root->data);
     }
 };
 
@@ -55,19 +55,19 @@ void Inorder(struct node *root)
     if (root != NULL)
     {
         Inorder(root->left);
-        printf("%d\n", root->data);
+        printf("%d\t", root->data);
         Inorder(root->right);
     }
 }
 
-void searching(struct node *root, int item)
+int searching(struct node *root, int item)
 {
     if (root != NULL)
     {
         if (root->data == item)
         {
             printf("element found\n");
-            return;
+            return 1;
         }
         else
         {
@@ -75,62 +75,129 @@ void searching(struct node *root, int item)
             {
                 searching(root->right, item);
             }
-            else{
-                searching(root->left,item);
+            else
+            {
+                searching(root->left, item);
             }
         }
     }
-    else{
+    else
+    {
         printf("elemnt not found\n");
-        return;
+        return 0;
     }
 };
 
 void insertion(struct node *root, int item)
 {
-    struct node * prev=NULL;
-    while(root!=NULL){
-        prev=root;
-        if(item==root->data){
+    struct node *prev = NULL;
+    while (root != NULL)
+    {
+        prev = root;
+        if (item == root->data)
+        {
             printf("elemtn cant be inserted\n");
             return;
         }
-        else if(item > root->data)
+        else if (item > root->data)
         {
-            root=root->right;
+            root = root->right;
         }
-         else{
-            root=root->left;
+        else
+        {
+            root = root->left;
         }
     }
-    struct node * newN= create(item);
-    if(item>prev->data)
+    struct node *newN = create(item);
+    if (item > prev->data)
     {
-        prev->right=newN;
+        prev->right = newN;
     }
-    else{
-        prev->left=newN;
+    else
+    {
+        prev->left = newN;
     }
 }
-void searchIter(struct node*root,int item)
+void searchIter(struct node *root, int item)
 {
-    while(root!=NULL)
+    while (root != NULL)
     {
-        if(item==root->data)
+        if (item == root->data)
         {
             printf("elemnt found\n");
             return;
         }
-        else if (item> root->data)
+        else if (item > root->data)
         {
-            root=root->right;
+            root = root->right;
         }
-        else{
-            root=root->left;
+        else
+        {
+            root = root->left;
         }
     }
     printf("elemnt not found\n");
 }
+struct node *inorderPred(struct node *root_Node)
+{
+    if (root_Node == NULL || root_Node->left == NULL)
+    {
+        return NULL;
+    }
+    root_Node = root_Node->left;
+    while (root_Node->right != NULL)
+    {
+        root_Node = root_Node->right;
+    }
+    return root_Node;
+}
+
+struct node *deletion(struct node *root_Node, int key)
+{
+    if (root_Node == NULL)
+    {
+        return NULL;
+    }
+    if (key > root_Node->data)
+    {
+        root_Node->right=deletion(root_Node->right, key);
+    }
+    else if (key < root_Node->data)
+    {
+        root_Node->left=deletion(root_Node->left, key);
+    }
+    // if no above is true, it means root is the key to be deleted
+    else
+    {
+        if (root_Node->left == NULL && root_Node->right == NULL)
+        {
+            free(root_Node);
+            return NULL;
+        }
+        else if (root_Node->left == NULL)
+        {
+            struct node *temp = root_Node->right;
+            free(root_Node);
+            return temp;
+        }
+        else if (root_Node->right == NULL)
+        {
+            struct node *temp = root_Node->left;
+            free(root_Node);
+            return temp;
+        }
+
+        else
+        {
+            struct node *inPre;
+            inPre = inorderPred(root_Node);
+            root_Node->data = inPre->data;
+            root_Node->left=deletion(root_Node->left, inPre->data);
+        }
+    }
+    return root_Node;
+}
+
 void main()
 {
     int i;
@@ -160,6 +227,9 @@ void main()
     // searching(p1,i);
     // searchIter(p1,8);
     // searchIter(p1,7);
-    insertion(p1,56);
+    insertion(p1, 56);
+    Inorder(p1);
+    struct node * node=deletion(p1, 41);
+    printf("\n");
     Inorder(p1);
 }

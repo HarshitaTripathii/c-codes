@@ -85,6 +85,22 @@ struct node *create(int data)
     return ptr;
 }
 
+void IsBST(struct node *root_Node){
+    if(root_Node==NULL)
+    {
+        return ;
+    }
+    if(root_Node->data <= root_Node->left->data || root_Node->data >= root_Node->right->data)
+    {
+        return ;
+    }
+    IsBST(root_Node->left);
+    IsBST(root_Node->right);
+    return ;
+
+
+}
+
 void main()
 {
     struct node* root=create(2);
