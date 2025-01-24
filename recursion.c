@@ -50,7 +50,7 @@ void incr(int n)
     }
     incr(n - 1);
     printf("%d\n", n);
-    return;
+    
 }
 void decr(int n)
 {
@@ -60,7 +60,6 @@ void decr(int n)
     }
     printf("%d\n", n);
     decr(n - 1);
-    return;
 }
 
 void incdec(int n)
