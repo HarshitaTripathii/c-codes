@@ -92,6 +92,51 @@ void division(int arr[], int low, int high)
     division(arr, mid+1, high);
     merge(arr,low,mid,high);
 }
+int partition(int arr[],int low, int high)
+{
+    int pivot=arr[low];
+    int i=low+1;
+    int j=high;
+    while(i<=j)
+    {
+        
+        while(i<=high && pivot>=arr[i])
+        {
+            i++;
+        };
+
+        
+        while(  pivot<arr[j])
+        {
+            j--;
+        };
+
+        if(i<j)
+        {
+            int temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;
+        }
+    }
+    int temp=arr[low];
+    arr[low]=arr[j];
+    arr[j]=temp;
+    return j;
+
+
+}
+
+void quickSort(int arr[], int low, int high)
+{
+    int j=0;
+if(low<high)
+{
+    j=partition(arr, low, high);
+    quickSort(arr,low, j-1);
+    quickSort(arr,j+1, high);
+
+}
+}
 
 void main()
 {
@@ -142,6 +187,21 @@ for (int i=0;i<9;i++)
 division(arr, 0,8);
 
 */
+int a[10]={10,16,8,12,15,6,3,9,5};
+
+printf("\nbefore sorting\n");
+for (int i=0;i<9;i++)
+{
+    printf("%d\t", a[i]);
+}
+quickSort(a, 0,8);
+printf("\nafter sorting\n");
+for (int i=0;i<9;i++)
+{
+    printf("%d\t", a[i]);
+}
+
+
 
 
 }
