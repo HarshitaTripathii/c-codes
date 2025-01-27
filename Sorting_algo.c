@@ -94,9 +94,12 @@ void division(int arr[], int low, int high)
 }
 int partition(int arr[],int low, int high)
 {
+    // int pivot=arr[low];
     int pivot=arr[low];
-    int i=low+1;
-    int j=high;
+    int i=low;
+    // int i=low+1;
+    int j=high-1;
+    // int j=high;
     while(i<=j)
     {
         
@@ -119,9 +122,9 @@ int partition(int arr[],int low, int high)
         }
     }
     int temp=arr[low];
-    arr[low]=arr[j];
-    arr[j]=temp;
-    return j;
+    arr[low]=arr[i];
+    arr[i]=temp;
+    return i;
 
 
 }
@@ -137,7 +140,6 @@ if(low<high)
 
 }
 }
-
 void main()
 {
     /*
@@ -187,6 +189,8 @@ for (int i=0;i<9;i++)
 division(arr, 0,8);
 
 */
+
+/*
 int a[10]={10,16,8,12,15,6,3,9,5};
 
 printf("\nbefore sorting\n");
@@ -200,7 +204,7 @@ for (int i=0;i<9;i++)
 {
     printf("%d\t", a[i]);
 }
-
+*/
 
 
 

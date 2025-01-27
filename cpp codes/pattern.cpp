@@ -137,6 +137,18 @@ void getStarPattern(int n) {
         cout << endl;
     }
 }
+void nLetterTriangle(int n) {
+    for(int i=n;i>=1;i--)
+    {
+        int count=65;
+        for(int j=i;j>=1;j--)
+        {
+           cout << char(count)<< " ";
+           count++;
+        }
+        cout << endl;
+    }
+}
 
 int main()
 {
@@ -145,6 +157,7 @@ int main()
 // symmetry(3); 
 // symmetry1(6);
 // getNumberPattern(4);
-getStarPattern(4);
+// getStarPattern(4);
+nLetterTriangle(3);
  return 0;
 }
