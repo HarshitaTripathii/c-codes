@@ -194,10 +194,24 @@ int  logBigPower(int base, int index)
     return ans;
 }
 
+int gfact(int n)
+{
+    int fact;
+    if(n<=1){
+        return n;
+    }
+    return n * gfact(n-1);
+    
+
+}
+
 
 void main()
 {
     int c = 1;
+    int a;
+    a=gfact(3);
+    printf("%d\n", a);
     // incp(5,c);
     // greet(5);
     // incr(5);
@@ -215,7 +229,7 @@ void main()
         // pip(2);
         // pip(3);
         // zigzag(3);
-        towerh(3, 'A', 'B', 'C');
+        // towerh(3, 'A', 'B', 'C');
 
 
 }
