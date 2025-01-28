@@ -194,16 +194,7 @@ int  logBigPower(int base, int index)
     return ans;
 }
 
-int gfact(int n)
-{
-    int fact;
-    if(n<=1){
-        return n;
-    }
-    return n * gfact(n-1);
-    
 
-}
 
 
 void main()
