@@ -31,16 +31,19 @@ newStr=s1.replace(" ","")
 # print(sn)
 # # print(sn[::-1])
 
-l1=[12,23,4]
-l2=[34,12,7]
-newl=l1+l2
-print(newl)
-l=[]
-rep=[]
-for i in (newl):
-    if (i not in l):
-        l.append(i)
-print(l)
+# l1=[12,23,4]
+# l2=[34,12,7]
+# newl=l1+l2
+# print(newl)
+# l=[]
+# rep=[]
+# for i in (newl):
+#     if (i not in l):
+#         l.append(i)
+# print(l)
+arr=[2,3,4,5,8,13,4,5]
+# print(f" the max is {max(range(arr[2], arr[4]))}")
+print(f"the max is {max(arr[2:4])}")
     
 
         
