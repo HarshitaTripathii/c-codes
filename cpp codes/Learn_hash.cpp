@@ -5,6 +5,7 @@ using namespace std;
 
 int main()
 {
+    /*
     int n;
     cout << "enter num of element in array" << endl;
     cin >> n;
@@ -50,6 +51,37 @@ int main()
         
          
     }
+    */
+
+   // STRING HASHING
+   // case 1 : only small letters : [97,122]  hash[26]  access : hash[c-'a']
+   // case 2 : small + capital + any other character (eg. @, $ etc): hash[256] as total ascii no. is 256 :  access : hash[c]
+   // case 3 : only capital letter : hash[26] : access : hash[c-'A']
+string s;
+cout << "enter string" << endl;
+cin>> s;
+// pre compute
+// int hash[26]={0};
+int hash[256]={0};
+for(int i=0;i<s.size();i++)
+{
+    // hash[s[i]-'a']++;
+    hash[s[i]]++;
+}
+
+int q;
+cout<< "enter no. of characters to be searched"<< endl;
+cin>> q;
+while(q--)
+{
+    char c;
+    cout << "enter char to count"<< endl;
+    cin >> c;
+    // cout <<c << "occured"<< hash[c-'a']<< "tines"<<endl;
+    cout <<c << "occured"<< hash[c]<< "tines"<<endl;
+
+}
+
     return 0;
 }
 
