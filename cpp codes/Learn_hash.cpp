@@ -53,10 +53,11 @@ int main()
     }
     */
 
-   // STRING HASHING
-   // case 1 : only small letters : [97,122]  hash[26]  access : hash[c-'a']
-   // case 2 : small + capital + any other character (eg. @, $ etc): hash[256] as total ascii no. is 256 :  access : hash[c]
-   // case 3 : only capital letter : hash[26] : access : hash[c-'A']
+   /*
+// STRING HASHING
+// case 1 : only small letters : [97,122]  hash[26]  access : hash[c-'a']
+// case 2 : small + capital + any other character (eg. @, $ etc): hash[256] as total ascii no. is 256 :  access : hash[c]
+// case 3 : only capital letter : hash[26] : access : hash[c-'A']
 string s;
 cout << "enter string" << endl;
 cin>> s;
@@ -81,7 +82,41 @@ while(q--)
     cout <<c << "occured"<< hash[c]<< "tines"<<endl;
 
 }
+*/
 
+// map data structure
+int n;
+cout << "enter number of elements in array"<< endl;
+cin >> n;
+int arr[n];
+cout <<"enter elements 1 by 1"<< endl;
+for(int i=0;i<n;i++)
+{
+  cin>> arr[i];
+}
+cout << "array formed"<< endl;
+// pre compute
+map<long, long> mp;
+for(int i=0; i<n;i++)
+{
+    mp[arr[i]]++;
+}
+
+cout << "lets see inside map you created"<< endl;
+for (auto it : mp){
+    cout << it.first<< "-->"<< it.second<< endl;
+}
+
+int q;
+cout << "no. of elements to be searched "<< endl;
+cin >> q;
+cout << "start enetering nos."<< endl;
+while(q--)
+{
+  int num;
+  cin >> num;
+  cout << mp[num]<< endl; 
+}
     return 0;
 }
 
