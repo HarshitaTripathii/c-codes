@@ -84,7 +84,9 @@ while(q--)
 }
 */
 
-// map data structure
+/*
+
+// map data structure for integers array
 int n;
 cout << "enter number of elements in array"<< endl;
 cin >> n;
@@ -117,6 +119,36 @@ while(q--)
   cin >> num;
   cout << mp[num]<< endl; 
 }
+*/
+
+string s;
+cout << "enter string" << endl;
+cin>> s;
+// pre compute
+map<char,int>mp;
+for(int i=0;i<s.size();i++)
+{
+    mp[s[i]]++;
+}
+cout << "lets see inside map you created"<< endl;
+for (auto it : mp){
+    cout << it.first<< "-->"<< it.second<< endl;
+}
+
+int q;
+cout<< "enter no. of characters to be searched"<< endl;
+cin>> q;
+while(q--)
+{
+    char c;
+    cout << "enter char to count"<< endl;
+    cin >> c;
+    // cout <<c << "occured"<< hash[c-'a']<< "tines"<<endl;
+    cout <<c << "occured"<< mp[c]<< "tines"<<endl;
+
+}
+
+
     return 0;
 }
 
