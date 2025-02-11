@@ -121,11 +121,12 @@ while(q--)
 }
 */
 
+/*
 string s;
 cout << "enter string" << endl;
 cin>> s;
 // pre compute
-map<char,int>mp;
+unordered_map<char,int>mp;
 for(int i=0;i<s.size();i++)
 {
     mp[s[i]]++;
@@ -147,6 +148,39 @@ while(q--)
     cout <<c << "occured"<< mp[c]<< "tines"<<endl;
 
 }
+*/
+
+// trials
+vector<int> arr={2,2,3,4,6};
+// unordered_map<int , int> mp;
+map<int , int> mp;
+for(int i=0;i< arr.size();i++)
+{
+   mp[arr[i]]++;
+}
+vector<int> v;
+for(auto it: mp)
+{
+    cout << it.first << "-->"<< it.second<< endl;
+}
+cout << "ELEMENTS OF VECTOR arr IS "<< endl;
+for(int i=0;i<arr.size();i++)
+{
+    cout << arr[i]<<" ";
+}
+cout << "size of vector is "<< arr.size()<< endl;
+cout << "entering elements to array arr"<< endl;
+for(auto it : mp){
+    v.push_back(it.first);
+}
+arr=v;
+cout << "ELEMENTS OF VECTOR arr IS "<< endl;
+for(int i=0;i<arr.size();i++)
+{
+    cout << arr[i]<<" ";
+}
+cout << "size of vector is "<< arr.size()<< endl;
+
 
 
     return 0;
