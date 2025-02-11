@@ -51,14 +51,38 @@ void changeArray(int a[])
   a[0] = a[0] + 100;
   cout << "outside main " << a[0] << endl;
 }
+
+int searchRecur(int l, int h, int x, int arr[])
+{
+  if(l>h){
+    return -1;
+  }
+  int mid=(l+h)/2;
+  if(arr[mid]==x)
+  {
+    return mid;
+  }
+  else if(arr[mid]>x)
+  {
+    return searchRecur(l,mid-1,x,arr);
+  }
+  else
+  {
+return searchRecur(mid+1,h,x,arr);
+  }
+
+}
 int main()
 {
+  int a[6]={10,20,3,45,6,7};
+  int x=searchRecur(0,5,8,a);
+  cout<< x<< endl;
 
-  vector <long long> ans=factorialNumbers(89);
- for(auto it : ans)
- {
-  cout << it<<  endl;
- }
+//   vector <long long> ans=factorialNumbers(89);
+//  for(auto it : ans)
+//  {
+//   cout << it<<  endl;
+//  }
   // int arr[4] = {10, 20, 30, 40};
   // cout << "Without  main " << arr[0] << endl;
 
@@ -205,4 +229,8 @@ int main()
   } while (j<=4);
   cout << j << endl;
   */
+
+// recursive binary search
+
+}
 
