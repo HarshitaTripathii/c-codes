@@ -54,35 +54,58 @@ void changeArray(int a[])
 
 int searchRecur(int l, int h, int x, int arr[])
 {
-  if(l>h){
+  if (l > h)
+  {
     return -1;
   }
-  int mid=(l+h)/2;
-  if(arr[mid]==x)
+  int mid = (l + h) / 2;
+  if (arr[mid] == x)
   {
     return mid;
   }
-  else if(arr[mid]>x)
+  else if (arr[mid] > x)
   {
-    return searchRecur(l,mid-1,x,arr);
+    return searchRecur(l, mid - 1, x, arr);
   }
   else
   {
-return searchRecur(mid+1,h,x,arr);
+    return searchRecur(mid + 1, h, x, arr);
   }
+}
 
+int lowerBound(int l, int h, vector<int> arr, int x)
+{
+  
+  int ans = arr.size();
+  while (l <= h)
+  {
+    int mid = (l + h) / 2;
+    if (arr[mid] >= x)
+    {
+      ans = mid;
+      h = mid - 1;
+    }
+    else if (arr[mid] < x)
+    {
+      l = mid + 1;
+    }
+  }
+  return ans;
 }
 int main()
 {
-  int a[6]={10,20,3,45,6,7};
-  int x=searchRecur(0,5,8,a);
-  cout<< x<< endl;
+  vector<int> b = {1, 2, 3, 3, 5, 8, 8, 10, 10, 11};
+  int res = lowerBound(0, 9, b, 9);
+  cout << res << endl;
+  int a[6] = {10, 20, 3, 45, 6, 7};
+  int x = searchRecur(0, 5, 8, a);
+  // cout<< x<< endl;
 
-//   vector <long long> ans=factorialNumbers(89);
-//  for(auto it : ans)
-//  {
-//   cout << it<<  endl;
-//  }
+  //   vector <long long> ans=factorialNumbers(89);
+  //  for(auto it : ans)
+  //  {
+  //   cout << it<<  endl;
+  //  }
   // int arr[4] = {10, 20, 30, 40};
   // cout << "Without  main " << arr[0] << endl;
 
@@ -230,7 +253,5 @@ int main()
   cout << j << endl;
   */
 
-// recursive binary search
-
+  // recursive binary search
 }
-
