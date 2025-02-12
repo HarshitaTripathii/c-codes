@@ -1,8 +1,31 @@
 #include<bits/stdc++.h>
 using namespace std;
-
-
-
+string solve() {
+    int n, k;
+    cin >> n;
+    string s="";
+    vector<string> arr(n), vs;
+    unordered_map<string, int> map;
+    for(int i = 0; i < n; i++) {
+        cin >> arr[i];
+        map[arr[i]]++;
+    }
+    cin >> k;
+    for(int i = 0; i < n; i++) {
+        if(map[arr[i]] == 1) {
+            --k;
+            s=arr[i];
+        }
+    }
+    if(s=="")
+    {
+        return "-1";
+    }
+    else{
+        return s;
+    }
+    
+}
 int main()
 {
     /*
@@ -150,6 +173,7 @@ while(q--)
 }
 */
 
+/*
 // trials
 vector<int> arr={2,2,3,4,6};
 // unordered_map<int , int> mp;
@@ -184,5 +208,49 @@ cout << "size of vector is "<< arr.size()<< endl;
 
 
     return 0;
+    */
+
+/*
+unordered_map<string,int>mp;
+    int n;
+    cin >> n;
+    cin.ignore();
+    vector <string> v(n);
+   
+    for(int i=0;i<n;i++)
+    {
+        getline(cin,v[i]);
+        mp[v[i]]++;
+    }
+    int k;
+    cin>> k;
+    int c=0;
+    vector<string> vs;
+    for(int i=0;i<n;i++)
+    {
+        if(mp[v[i]]==1)
+        {
+            vs.push_back(v[i]);
+        }
+    }
+    if(vs.size()<k){
+        cout<< -1;
+        return 0;
+    }
+    else
+    {
+        cout<< vs[k-1];
+    }
+    
+    return 0;
+*/
+
+
+
+
+
+    cout << solve();
+    return 0;
+
 }
 
