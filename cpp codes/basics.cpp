@@ -75,7 +75,7 @@ int searchRecur(int l, int h, int x, int arr[])
 
 int lowerBound(int l, int h, vector<int> arr, int x)
 {
-  
+
   int ans = arr.size();
   while (l <= h)
   {
@@ -92,13 +92,65 @@ int lowerBound(int l, int h, vector<int> arr, int x)
   }
   return ans;
 }
+
+int UpperBound(int l, int h, vector<int> arr, int x)
+{
+
+  int ans = arr.size();
+  while (l <= h)
+  {
+    int mid = (l + h) / 2;
+    if (arr[mid] > x)
+    {
+      ans = mid;
+      h = mid - 1;
+    }
+    else
+    {
+      l = mid + 1;
+    }
+  }
+  return ans;
+}
+void moveZeroes(vector<int> &nums)
+{
+  int z=-1;
+  for (int i = 0; i < nums.size(); i++)
+  {
+    if (nums[i] == 0)
+    {
+      z = i;
+      break;
+    }
+  }
+  if(z==-1)
+  {
+    return;
+  }
+  for(int i=z+1;i<nums.size();i++)
+  {
+    if(nums[i] !=0)
+    {
+      swap(nums[z], nums[i]);
+      z++;
+    }
+  }
+  return;
+}
 int main()
 {
-  vector<int> b = {1, 2, 3, 3, 5, 8, 8, 10, 10, 11};
-  int res = lowerBound(0, 9, b, 9);
-  cout << res << endl;
-  int a[6] = {10, 20, 3, 45, 6, 7};
-  int x = searchRecur(0, 5, 8, a);
+  vector<int> b = {0, 2, 0, 3, 0, 8, 8, 0, 10, 11};
+  moveZeroes(b);
+  for(auto it : b)
+  {
+     cout << it<< " ";
+  }
+  // int resL = lowerBound(0, 9, b, 3);
+  // cout << resL << endl;
+  // int resU = UpperBound(0, 9, b, 3);
+  // cout << resU << endl;
+  // int a[6] = {10, 20, 3, 45, 6, 7};
+  // int x = searchRecur(0, 5, 8, a);
   // cout<< x<< endl;
 
   //   vector <long long> ans=factorialNumbers(89);
@@ -177,6 +229,18 @@ int main()
   }
   */
 
+  // chess
+
+  //  string s;
+  //     cin>> s;
+  //     if(s[0]%2==0 && (s[1]%2)==0 || s[0]%2 !=0 && (s[1]%2) !=0 )
+  //     {
+  //         cout << "Black"<< endl;
+  //     }
+  //     else{
+  //         cout<< "White"<< endl;
+  //     }
+
   /*
   //SWTICH CASE
   int num;
@@ -254,4 +318,5 @@ int main()
   */
 
   // recursive binary search
+  return 0;
 }
