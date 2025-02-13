@@ -137,14 +137,32 @@ void moveZeroes(vector<int> &nums)
   }
   return;
 }
+
+vector <int> prefixSum(vector <int> &v)
+{
+   vector<int>pref(v.size());
+   pref[0]=v[0];
+   for(int i=1;i<v.size();i++)
+   {
+    pref[i]=pref[i-1]+v[i];
+   }
+   return pref;
+}
 int main()
 {
-  vector<int> b = {0, 2, 0, 3, 0, 8, 8, 0, 10, 11};
-  moveZeroes(b);
-  for(auto it : b)
+  vector<int> b = { 2, 3,  8, 10, 11};
+  vector<int> vpre;
+  vpre=prefixSum(b);
+  for(int i=0;i<vpre.size();i++)
   {
-     cout << it<< " ";
+    cout<< vpre[i]<< " ";
   }
+  // vector<int> b = {0, 2, 0, 3, 0, 8, 8, 0, 10, 11};
+  // moveZeroes(b);
+  // for(auto it : b)
+  // {
+  //    cout << it<< " ";
+  // }
   // int resL = lowerBound(0, 9, b, 3);
   // cout << resL << endl;
   // int resU = UpperBound(0, 9, b, 3);
