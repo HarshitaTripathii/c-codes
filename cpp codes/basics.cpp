@@ -148,15 +148,37 @@ vector <int> prefixSum(vector <int> &v)
    }
    return pref;
 }
+vector <int> suffixSum(vector <int> &v)
+{
+  vector <int> suf(v.size());
+  suf[v.size()-1]=v[v.size()-1];
+  for(int i=v.size()-2;i>=0;i--)
+  {
+    suf[i]=suf[i+1]+v[i];
+  }
+  return suf;
+}
 int main()
 {
   vector<int> b = { 2, 3,  8, 10, 11};
+
+  /*
   vector<int> vpre;
   vpre=prefixSum(b);
   for(int i=0;i<vpre.size();i++)
   {
     cout<< vpre[i]<< " ";
   }
+  */
+
+  vector<int> vsuf;
+  vsuf=suffixSum(b);
+  for(int i=0;i<vsuf.size();i++)
+  {
+    cout<< vsuf[i]<< " ";
+  }
+
+
   // vector<int> b = {0, 2, 0, 3, 0, 8, 8, 0, 10, 11};
   // moveZeroes(b);
   // for(auto it : b)
