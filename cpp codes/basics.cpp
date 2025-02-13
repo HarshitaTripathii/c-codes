@@ -158,6 +158,8 @@ vector <int> suffixSum(vector <int> &v)
   }
   return suf;
 }
+
+
 int main()
 {
   vector<int> b = { 2, 3,  8, 10, 11};
@@ -171,12 +173,16 @@ int main()
   }
   */
 
+ /*
+
   vector<int> vsuf;
   vsuf=suffixSum(b);
   for(int i=0;i<vsuf.size();i++)
   {
     cout<< vsuf[i]<< " ";
   }
+
+  */
 
 
   // vector<int> b = {0, 2, 0, 3, 0, 8, 8, 0, 10, 11};
@@ -358,5 +364,32 @@ int main()
   */
 
   // recursive binary search
+
+
+vector<int> v1={4,3,7,2};
+for(int i=0;i<v1.size();i++)
+{
+  int e=0;
+  int x=v1.size()-(i+1) +1;
+  cout<< "total " << x << " subarrays of SIZE "<<i+1<< endl;
+
+  for(int j=0;j<x;j++)
+  {
+    vector<int> v2(i+1);
+    int c=j;
+
+    for(int k=0;k<(i+1);k++)
+    {
+      v2[k]=v1[c];
+      c++;
+      cout << "subarray no. "<<j+1 << " ";
+      cout<< v2[k]<< endl;
+    }
+    // j=c;
+
+   
+  }
+
+}
   return 0;
 }
