@@ -158,12 +158,50 @@ vector <int> suffixSum(vector <int> &v)
   }
   return suf;
 }
+void equalSum(vector <int> &v3){
+  int s1=0,s2=0;
+  for(int i=0;i<v3.size()-1;i++)
+  {
+    for(int j=0;j<=i;j++)
+    {
+      s1=s1+v3[j];
+    }
+    for(int j=i+1;j<v3.size();j++){
+      s2=s2+v3[j];
+    }
+
+  if(s1==s2)
+  {
+    cout << i<< endl;
+  }
+  
+  }
+  
+}
 
 
 int main()
 {
-  vector<int> b = { 2, 3,  8, 10, 11};
+vector<int> b = { 2, 3,  8, 10, 2};
+vector <int>v3={3,4,-2,5,8,20,-10,8};
 
+  for(int i=0;i<v3.size()-1;i++)
+  {
+    int s1=0,s2=0;
+    for(int j=0;j<=i;j++)
+    {
+      s1=s1+v3[j];
+    }
+    for(int j=i+1;j<v3.size();j++){
+      s2=s2+v3[j];
+    }
+
+  if(s1==s2)
+  {
+    cout << i<< endl;
+  }
+  
+  }
   /*
   vector<int> vpre;
   vpre=prefixSum(b);
@@ -365,7 +403,8 @@ int main()
 
   // recursive binary search
 
-
+/*
+// creating all possible sized sub array
 vector<int> v1={4,3,7,2};
 for(int i=0;i<v1.size();i++)
 {
@@ -385,11 +424,13 @@ for(int i=0;i<v1.size();i++)
       cout << "subarray no. "<<j+1 << " ";
       cout<< v2[k]<< endl;
     }
-    // j=c;
+    // j=c;  // this is getting output wrong because, after j=c, it goes to j loop, increase its value again 
 
    
   }
 
 }
+
+*/
   return 0;
 }
