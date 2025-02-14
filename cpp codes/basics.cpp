@@ -159,32 +159,7 @@ vector <int> suffixSum(vector <int> &v)
   return suf;
 }
 void equalSum(vector <int> &v3){
-  int s1=0,s2=0;
-  for(int i=0;i<v3.size()-1;i++)
-  {
-    for(int j=0;j<=i;j++)
-    {
-      s1=s1+v3[j];
-    }
-    for(int j=i+1;j<v3.size();j++){
-      s2=s2+v3[j];
-    }
-
-  if(s1==s2)
-  {
-    cout << i<< endl;
-  }
   
-  }
-  
-}
-
-
-int main()
-{
-vector<int> b = { 2, 3,  8, 10, 2};
-vector <int>v3={3,4,-2,5,8,20,-10,8};
-
   for(int i=0;i<v3.size()-1;i++)
   {
     int s1=0,s2=0;
@@ -202,6 +177,35 @@ vector <int>v3={3,4,-2,5,8,20,-10,8};
   }
   
   }
+  
+}
+
+void eqSumP(vector<int> &v)
+{
+  int c=0;
+  int sumV=accumulate(v.begin(),v.end(),0);
+  vector<int>pre(v.size());
+  pre[0]=v[0];
+  for (int i=1;i<v.size();i++)
+  {
+    pre[i]=v[i]+pre[i-1];
+    if((sumV-pre[i-1])==pre[i-1])
+    {
+      // cout << i-1<< endl;
+      c++;
+    }
+  }
+  cout << "total pairs are "<< c<< endl;
+
+}
+
+
+int main()
+{
+vector<int> b = { 2, 3,  8, 10, 2};
+vector <int>v4={3,4,-2,5,8,20,-10,8};
+eqSumP(v4);
+// equalSum(v4);
   /*
   vector<int> vpre;
   vpre=prefixSum(b);
