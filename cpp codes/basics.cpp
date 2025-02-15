@@ -114,7 +114,7 @@ int UpperBound(int l, int h, vector<int> arr, int x)
 }
 void moveZeroes(vector<int> &nums)
 {
-  int z=-1;
+  int z = -1;
   for (int i = 0; i < nums.size(); i++)
   {
     if (nums[i] == 0)
@@ -123,13 +123,13 @@ void moveZeroes(vector<int> &nums)
       break;
     }
   }
-  if(z==-1)
+  if (z == -1)
   {
     return;
   }
-  for(int i=z+1;i<nums.size();i++)
+  for (int i = z + 1; i < nums.size(); i++)
   {
-    if(nums[i] !=0)
+    if (nums[i] != 0)
     {
       swap(nums[z], nums[i]);
       z++;
@@ -138,74 +138,131 @@ void moveZeroes(vector<int> &nums)
   return;
 }
 
-vector <int> prefixSum(vector <int> &v)
+vector<int> prefixSum(vector<int> &v)
 {
-   vector<int>pref(v.size());
-   pref[0]=v[0];
-   for(int i=1;i<v.size();i++)
-   {
-    pref[i]=pref[i-1]+v[i];
-   }
-   return pref;
-}
-vector <int> suffixSum(vector <int> &v)
-{
-  vector <int> suf(v.size());
-  suf[v.size()-1]=v[v.size()-1];
-  for(int i=v.size()-2;i>=0;i--)
+  vector<int> pref(v.size());
+  pref[0] = v[0];
+  for (int i = 1; i < v.size(); i++)
   {
-    suf[i]=suf[i+1]+v[i];
+    pref[i] = pref[i - 1] + v[i];
+  }
+  return pref;
+}
+
+int subarray(vector<int> &v)
+{
+  map<int, vector<pair<int, int>>> mp;
+  // int s = v.size();
+  int c = 0;
+  /*
+  vector<int> prev(s);
+
+  for (int i = 0; i < v.size(); i++)
+  {
+    
+    prev[i] = v[i];
+    for (int j = i; j < v.size() - 1; j++)
+    {
+      prev[j + 1] = prev[j] + v[j + 1];
+      mp[prev[j]].push_back({i, j});
+    }
+    s--;
+  }
+  */
+
+ for(int i=0;i<v.size();i++)
+ {
+  int sum=0;
+  for(int j=i;j<v.size();j++)
+  {
+    sum=sum+v[j];
+    mp[sum].push_back({i,j});
+  }
+ }
+  for (auto it : mp)
+  {
+    vector<pair<int, int>> vm = it.second;
+    if (vm.size() >= 2)
+    {
+      for (int i = 0; i < vm.size(); i++)
+      {
+        for (int j = i + 1; j < vm.size(); j++)
+        {
+          int l1, l2, r1, r2;
+          l1 = vm[i].first;
+          r1 = vm[i].second;
+          l2 = vm[j].first;
+          r2 = vm[j].second;
+          if (r1 < l2 || r2 < l1)
+          {
+            c++;
+          }
+        }
+      }
+    }
+  }
+  return c;
+}
+vector<int> suffixSum(vector<int> &v)
+{
+  vector<int> suf(v.size());
+  suf[v.size() - 1] = v[v.size() - 1];
+  for (int i = v.size() - 2; i >= 0; i--)
+  {
+    suf[i] = suf[i + 1] + v[i];
   }
   return suf;
 }
-void equalSum(vector <int> &v3){
-  
-  for(int i=0;i<v3.size()-1;i++)
+void equalSum(vector<int> &v3)
+{
+
+  for (int i = 0; i < v3.size() - 1; i++)
   {
-    int s1=0,s2=0;
-    for(int j=0;j<=i;j++)
+    int s1 = 0, s2 = 0;
+    for (int j = 0; j <= i; j++)
     {
-      s1=s1+v3[j];
+      s1 = s1 + v3[j];
     }
-    for(int j=i+1;j<v3.size();j++){
-      s2=s2+v3[j];
+    for (int j = i + 1; j < v3.size(); j++)
+    {
+      s2 = s2 + v3[j];
     }
 
-  if(s1==s2)
-  {
-    cout << i<< endl;
+    if (s1 == s2)
+    {
+      cout << i << endl;
+    }
   }
-  
-  }
-  
 }
 
 void eqSumP(vector<int> &v)
 {
-  int c=0;
-  int sumV=accumulate(v.begin(),v.end(),0);
-  vector<int>pre(v.size());
-  pre[0]=v[0];
-  for (int i=1;i<v.size();i++)
+  int c = 0;
+  int sumV = accumulate(v.begin(), v.end(), 0);
+  vector<int> pre(v.size());
+  pre[0] = v[0];
+  for (int i = 1; i < v.size(); i++)
   {
-    pre[i]=v[i]+pre[i-1];
-    if((sumV-pre[i-1])==pre[i-1])
+    pre[i] = v[i] + pre[i - 1];
+    if ((sumV - pre[i - 1]) == pre[i - 1])
     {
       // cout << i-1<< endl;
       c++;
     }
   }
-  cout << "total pairs are "<< c<< endl;
-
+  cout << "total pairs are " << c << endl;
 }
-
 
 int main()
 {
-vector<int> b = { 2, 3,  8, 10, 2};
-vector <int>v4={3,4,-2,5,8,20,-10,8};
-eqSumP(v4);
-// equalSum(v4);
+  // vector<int> v={1,-1,2,-2};
+  vector<int> v={1,2,3};
+  // vector<int> b = {2, 3, 8, 10, 2};
+  // vector<int> v4 = {3, 4, -2, 5, 8, 20, -10, 8};
+  // eqSumP(v4);
+  // equalSum(v4);
+  int a=subarray(v);
+  cout << a<< endl;
   /*
   vector<int> vpre;
   vpre=prefixSum(b);
@@ -215,17 +272,16 @@ eqSumP(v4);
   }
   */
 
- /*
+  /*
 
-  vector<int> vsuf;
-  vsuf=suffixSum(b);
-  for(int i=0;i<vsuf.size();i++)
-  {
-    cout<< vsuf[i]<< " ";
-  }
+   vector<int> vsuf;
+   vsuf=suffixSum(b);
+   for(int i=0;i<vsuf.size();i++)
+   {
+     cout<< vsuf[i]<< " ";
+   }
 
-  */
-
+   */
 
   // vector<int> b = {0, 2, 0, 3, 0, 8, 8, 0, 10, 11};
   // moveZeroes(b);
@@ -407,34 +463,34 @@ eqSumP(v4);
 
   // recursive binary search
 
-/*
-// creating all possible sized sub array
-vector<int> v1={4,3,7,2};
-for(int i=0;i<v1.size();i++)
-{
-  int e=0;
-  int x=v1.size()-(i+1) +1;
-  cout<< "total " << x << " subarrays of SIZE "<<i+1<< endl;
-
-  for(int j=0;j<x;j++)
+  /*
+  // creating all possible sized sub array
+  vector<int> v1={4,3,7,2};
+  for(int i=0;i<v1.size();i++)
   {
-    vector<int> v2(i+1);
-    int c=j;
+    int e=0;
+    int x=v1.size()-(i+1) +1;
+    cout<< "total " << x << " subarrays of SIZE "<<i+1<< endl;
 
-    for(int k=0;k<(i+1);k++)
+    for(int j=0;j<x;j++)
     {
-      v2[k]=v1[c];
-      c++;
-      cout << "subarray no. "<<j+1 << " ";
-      cout<< v2[k]<< endl;
-    }
-    // j=c;  // this is getting output wrong because, after j=c, it goes to j loop, increase its value again 
+      vector<int> v2(i+1);
+      int c=j;
 
-   
+      for(int k=0;k<(i+1);k++)
+      {
+        v2[k]=v1[c];
+        c++;
+        cout << "subarray no. "<<j+1 << " ";
+        cout<< v2[k]<< endl;
+      }
+      // j=c;  // this is getting output wrong because, after j=c, it goes to j loop, increase its value again
+
+
+    }
+
   }
 
-}
-
-*/
+  */
   return 0;
 }
