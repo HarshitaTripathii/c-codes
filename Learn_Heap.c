@@ -2,6 +2,8 @@
 #define max 10
 int arr[max];
 int count = 0;
+
+// insertion is a function which creates max heap, by inserting element at its correct place
 void insertion(int data, int arr[])
 {
     count++;
@@ -64,14 +66,51 @@ void deletion( int arr[])
    }
 }
 
+void heapify(int m, int arr[])
+{
+      int n=m;
+      int c1=n*2;
+      int c2=(n*2)+1;
+      if(c1<=count && arr[c1]>arr[n])
+      {
+        n=c1;
+      }
+      else if ( c2 <=count && arr[c2]>arr[n])
+      {
+        n=c2;
+      }
+      if(n!=m)
+      {
+        swap(&arr[m],&arr[n]);
+        heapify(n, arr);
+
+      }
+}
+
 int main()
 {
-    int arr[max] = {};
-    insertion(60, arr);
-    insertion(50, arr);
-    insertion(40, arr);
-    insertion(30, arr);
-    insertion(75, arr);
+    // int arr[max] = {};
+    // insertion(60, arr);
+    // insertion(50, arr);
+    // insertion(40, arr);
+    // insertion(30, arr);
+    // insertion(75, arr);
+    int arr[6]={0,54,53,55,52,50};
+    // int c=sizeof(arr)/sizeof(int);
+    int c=5;
+    for(int i=c/2; i>0;i--)
+    {
+        heapify(i,arr);
+    }
+
+    printf("\nprinting element in max heap form \n");
+
+    for (int i = 1; i <=c; i++)
+    {
+        printf("%d\t", arr[i]);
+    }
+
+    /*
     for (int i = 1; i <= count; i++)
     {
         printf("%d\t", arr[i]);
@@ -91,6 +130,8 @@ int main()
     {
         printf("%d\t", arr[i]);
     }
+
+    */
 
 
     return 0;
