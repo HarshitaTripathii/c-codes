@@ -33,13 +33,14 @@ void swap(int *a, int *b)
     *b=temp;
 }
 
-void deletion( int arr[])
+int deletion( int arr[])
 {
     if(count==0)
     {
         printf("empty tree\n");
-        return;
+        return 1;
     }
+   int root=arr[1];
    arr[1]=arr[count];
    count--;
    int ind=1;
@@ -61,53 +62,89 @@ void deletion( int arr[])
 
     }
     else{
-        return ;
+        return root; ;
     }
    }
+   
 }
 
-void heapify(int m, int arr[])
+void heapify(int m, int arr[],int p)
 {
       int n=m;
       int c1=n*2;
       int c2=(n*2)+1;
-      if(c1<=count && arr[c1]>arr[n])
+      if(c1<=p && arr[c1]>arr[n])
       {
         n=c1;
       }
-      else if ( c2 <=count && arr[c2]>arr[n])
+      else if ( c2 <=p && arr[c2]>arr[n])
       {
         n=c2;
       }
       if(n!=m)
       {
         swap(&arr[m],&arr[n]);
-        heapify(n, arr);
+        heapify(n, arr,p);
 
       }
 }
 
+
+
+/*
+void heapSort(int arr[], int size)
+{
+    // creating heap 
+    for(int i=size/2; i>0;i--)
+    {
+        heapify(i,arr);
+    }
+    int sample_array[size];
+    for(int i=count;i>=1;i--)
+    {
+        int e=deletion(arr);
+        sample_array[i]=e;
+    }
+    arr=sample_array;
+}
+    */
+
+    void HeapSort(int arr[],int c1)
+    {
+        for(int i=c1/2; i>0;i--)
+        {
+            heapify(i,arr,c1);
+        }
+        int size=c1;
+        while(size>1)
+        {
+            swap(&arr[1], &arr[size]);
+            size--;
+            heapify(size,arr,c1);
+        }
+        
+    }
+
 int main()
 {
+    int arr[6]={0,54,53,55,52,50};
+   
+    // int size=sizeof(arr)/sizeof(int);
+    int c=5;
+    HeapSort(arr,c);
+    printf("\nprinting element in max heap form\n");
+
+    for (int i = 1; i <=c; i++)
+    {
+        printf("%d\t", arr[i]);
+    }
+    
     // int arr[max] = {};
     // insertion(60, arr);
     // insertion(50, arr);
     // insertion(40, arr);
     // insertion(30, arr);
     // insertion(75, arr);
-    int arr[6]={0,54,53,55,52,50};
-    // int c=sizeof(arr)/sizeof(int);
-    int c=5;
-    for(int i=c/2; i>0;i--)
-    {
-        heapify(i,arr);
-    }
-
-    printf("\nprinting element in max heap form \n");
-
-    for (int i = 1; i <=c; i++)
-    {
-        printf("%d\t", arr[i]);
     }
 
     /*
