@@ -54,11 +54,45 @@ void insertionAtPos(int data,int pos)
         newN->link=ptr->link;
         ptr->link=newN;
     }
-  
+}
 
-    
+void deletionBegin()
+{
+    struct node*ptr=NULL;
+    ptr=tail->link;
+    tail->link=ptr->link;
+    free(ptr);
+    ptr=NULL;
+}
 
-    
+void deletionEnd()
+{
+    struct node*ptr=NULL;
+    ptr=tail->link;
+    while(ptr->link!=tail)
+    {
+        ptr=ptr->link;
+    }
+    ptr->link=tail->link;
+    free(tail);
+    tail=ptr;
+}
+
+void deletionAtPos(int pos)
+{
+    struct node*ptr=NULL;
+    struct node*ptr2=NULL;  // node to be deleted
+    ptr=tail->link;
+    pos--;
+    while(pos!=1)
+    {
+     ptr=ptr->link;
+     pos--;
+    }
+    ptr2=ptr->link;  // node to be deleted
+    ptr->link=ptr2->link;
+    free(ptr2);
+    ptr2=NULL;
 }
 void print()
 {
@@ -70,13 +104,14 @@ void print()
 
     }
     while(ptr!=tail->link);
-    
-    
 }
 void main()
 {
     AddtoEmpty(75);
     insertionBegin(70);
     insertEnd(80);
+    deletionBegin();
+    insertionBegin(70);
+    deletionEnd();
     print();
 }
