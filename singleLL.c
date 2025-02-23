@@ -51,6 +51,7 @@ void print()
         ptr = ptr->link;
     }
 }
+/*
 void reverse()
 {
     struct node *temp = NULL;
@@ -63,6 +64,21 @@ void reverse()
         temp2 = temp2->link;
     }
     head->link = temp;
+}
+*/
+
+void reverse()
+{
+    struct node *temp=NULL;
+    struct node *temp2=NULL;
+    while(head!=NULL)
+    {
+        temp2=head->link;
+        head->link=temp;
+        temp=head;
+        head=temp2;
+    }
+    head=temp;
 }
 void main()
 {
