@@ -5,25 +5,78 @@ struct node{
     struct node *link;
 };
 struct node *tail=NULL;
-void createNode_InsertE(int data)
+
+void AddtoEmpty(int data)
 {
-    if(tail==NULL)
-    {
-        struct node *ptr=(struct node *)malloc(sizeof(struct node));
-        ptr->data=data;
-        ptr->link=ptr; 
-        tail=ptr;
-    }
-    
-    struct node *ptr=(struct node *)malloc(sizeof(struct node));
+    struct node * ptr=(struct node *)malloc(sizeof(struct node));
     ptr->data=data;
     ptr->link=ptr;
-    
+    tail=ptr;
 }
-
-void insertionB(int data)
+void insertEnd(int data)
 {
     struct node *ptr=(struct node *)malloc(sizeof(struct node));
     ptr->data=data;
-    ptr->link=
+    ptr->link=tail->link;
+    tail->link=ptr;
+    tail=ptr;
+    
+}
+void insertionBegin(int data)
+{
+    struct node *ptr=(struct node *)malloc(sizeof(struct node));
+    ptr->data=data;
+    ptr->link=tail->link;
+    tail->link=ptr;
+}
+void insertionAtPos(int data,int pos)
+{
+    struct node*newN=(struct node *)malloc(sizeof(struct node));
+    newN->data=data;
+    newN->link=NULL;
+
+    struct node *ptr=NULL;
+    ptr=tail->link;
+    pos--;
+    while(pos!=1)
+    {
+       ptr=ptr->link;
+       pos--;
+    }
+
+    if(ptr==tail)
+    {
+        newN->link=tail->link;
+        tail->link=newN;
+        tail=newN;
+    }
+    else{
+        newN->link=ptr->link;
+        ptr->link=newN;
+    }
+  
+
+    
+
+    
+}
+void print()
+{
+    struct node *ptr=NULL;
+    ptr=tail->link;
+    do{
+        printf("%d\n", ptr->data);
+        ptr=ptr->link;
+
+    }
+    while(ptr!=tail->link);
+    
+    
+}
+void main()
+{
+    AddtoEmpty(75);
+    insertionBegin(70);
+    insertEnd(80);
+    print();
 }
