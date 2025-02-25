@@ -32,7 +32,6 @@ void swap(int *a, int *b)
     *a=*b;
     *b=temp;
 }
-
 int deletion( int arr[])
 {
     if(count==0)
@@ -67,7 +66,6 @@ int deletion( int arr[])
    }
    
 }
-
 void heapify(int m, int arr[],int p)
 {
       int n=m;
@@ -88,9 +86,6 @@ void heapify(int m, int arr[],int p)
 
       }
 }
-
-
-
 /*
 void heapSort(int arr[], int size)
 {
