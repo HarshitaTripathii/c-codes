@@ -36,3 +36,37 @@
 </div> 
 </body> 
 </html>
+
+<script> 
+    function validateemail(){ 
+    var x=document.myform.email.value; 
+    var atposition=x.indexOf("@"); 
+    var dotposition=x.lastIndexOf("."); 
+    if(atposition<1||dotposition<atposition+2||dotposition+2>=x.length){ 
+    alert("Please enter a valid email address"); 
+    return false; 
+    } 
+    } 
+    function validatenumber(){ 
+    var num=document.myform.num.value; 
+    if(isNan(num)){ 
+    document.getElementById("numloc").innerHTML="Enter Numeric value only"; 
+    return false; 
+    } 
+    else{ 
+    return true; 
+    } 
+    } 
+    </script> 
+    </head>
+
+</form> 
+<form name="myform" method="post" action="#" onsubmit="return validateemail();"> 
+Email:<input type ="text" name="email"><br/> 
+<form name="myform" onsubmit="return validatenumber();"> 
+Number:<input type="text" name="num"><span id="numloc"><br/></span> 
+<label for = "login"> </label> 
+<input type = "submit" id = "login"><br> 
+</h2> 
+</form> 
+</form>
