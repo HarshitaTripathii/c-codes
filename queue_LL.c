@@ -37,6 +37,17 @@ void deque()
     }
 }
 
+void top()
+{
+    if(start==NULL)
+    {
+        return;
+    }
+    else{
+        printf("%d",start->data);
+    }
+}
+
 void print()
 {
     if(start==NULL)
@@ -60,8 +71,14 @@ void main()
     enque(35);
     enque(45);
     enque(55);
+    top();
+    printf("\n");
     // print();
     deque();
     deque();
     print();
+    printf("\n");
+    top();
+
+
 }
