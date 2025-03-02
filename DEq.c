@@ -20,7 +20,8 @@ int isEmpty()
 }
 void enqf(int data, int arr[])
 {
-    if(f==-1 && )
+    // if(f==-1 )
+    if(isFull())
     {
         printf("q is full\n");
     }
