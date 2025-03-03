@@ -77,6 +77,7 @@ void print(int arr[])
         printf("%d\t", arr[i]);
     }
     printf("\n");
+    printf("\n");
 
     
 }
