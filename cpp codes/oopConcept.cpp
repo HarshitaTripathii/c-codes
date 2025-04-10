@@ -3,7 +3,7 @@ using namespace std;
 class Details{
     public:
         // data memebrs : attribute
-        string name;
+        string* name=new string;
         int age;
         float cgpa;
         vector<string> lang;
@@ -13,6 +13,7 @@ class Details{
         Details()
         {
             name="Unknown";
+            name=nullptr;   // in case of string *name
             age=22;
             cgpa=9;
             lang={"English", "Hindi"};
@@ -22,17 +23,24 @@ class Details{
         // parameter constructor
         Details(string n, int a,float c,vector<string> l)
         {
-            name=n;
+            *name=n;
             age=a;
             cgpa=c;
             lang=l;
             cout<< "Parameteric values have been set "<< endl;
         }
 
+        
+        // Destructor
+        ~Details() {
+            delete name; // Free allocated memory
+            cout << "Destructor called, cleaning up resources" << endl;
+        }
+
         // member function : methods
         void displayEachDetail()
         {
-        cout<< "Name is "<< name<< " of age "<<age<< " and cg is "<< cgpa<< endl;
+        cout<< "Name is "<< *name<< " of age "<<age<< " and cg is "<< cgpa<< endl;
         cout << "Languages Known is ";
         for(string l : lang)
         {
@@ -65,8 +73,32 @@ int main()
     detail2.displayEachDetail();
     */
 
+
+    /*
     //constructor get called upon creating objects
     Details det("Harshit", 20, 7.99,{"Eng", "Hin"});
-    cout<<det.name;
+    // cout<<det.name;
+    det.displayEachDetail();
+    */
+
+    // copy constructor : creating copy of an object
+    Details det("Harshit", 20, 7.99,{"Eng", "Hin"});
+    det.displayEachDetail();
+
+    Details detail3=det;
+    detail3.displayEachDetail();
+
+
+    // no modification in any class var using detail3 , but possible through det
+    // *det.name="Yashi";
+    // det.age=30;
+
+    // detail3.age=40;
+    // detail3.displayEachDetail();
+
+   
+
+
+    
     return 0;
 }
