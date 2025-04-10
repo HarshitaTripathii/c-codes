@@ -8,6 +8,12 @@ class Details{
         float cgpa;
         vector<string> lang;
 
+        // default constructor
+        Details()
+        {
+            cout<< "I am a constructor "<< endl;
+        }
+
         // member function : methods
         void displayEachDetail()
         {
@@ -26,6 +32,7 @@ class Details{
 };
 int main()
 {
+    /*
     // cout<< "hello";
     Details detail1;  // object detail has been created
     detail1.name="Harshita Tripathi";
@@ -41,5 +48,9 @@ int main()
 
     detail1.displayEachDetail();
     detail2.displayEachDetail();
+    */
+
+    //constructor get called upon creating objects
+    Details det;
     return 0;
 }
