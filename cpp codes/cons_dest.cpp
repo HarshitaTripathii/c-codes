@@ -1,4 +1,5 @@
 // codes are from ai for understanding
+
 #include <iostream>
 
 class Sample {
@@ -15,33 +16,35 @@ public:
 
 class Sample1 {
 public:
-    Sample1() { std::cout << "Constructor called." << std::endl; }
-    ~Sample1() { std::cout << "Destructor called." << std::endl; }
+        int* data;
+
+        Sample1() {
+            data = new int[10]; // Dynamically allocate an array of integers
+            std::cout << "Constructor called." << std::endl;
+        }
+
+        // Destructor to clean up allocated memory
+        ~Sample1() {
+            delete[] data; // Free the dynamically allocated array
+            std::cout << "Destructor called." << std::endl;
+}
 };
 
 int main() {
-   
+    // for class Sample1
+    Sample* s = new Sample(); // Constructor called
 
-    return 0;
-}
-
-int main() {
-    // for class Sample2
-
-    {
-        Sample1 s1; // Constructor called, s1 goes out of scope -> Destructor called
-    }
-
-    Sample* s2 = new Sample(); // Constructor called
-    delete s2; // Destructor called
+    delete s; // Destructor will be called here
 
 
 
 
-// for class Sample1
-    Sample1* s = new Sample1(); // Constructor called
+// for class Sample
+    Sample* s = new Sample(); // Constructor called
 
     delete s; // Memory for 's' is deallocated, but no destructor is called
+    // not an efficient way
+    // Memory allocated for data is still leaked.
 
     return 0;
 }
