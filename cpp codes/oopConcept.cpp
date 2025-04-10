@@ -8,10 +8,25 @@ class Details{
         float cgpa;
         vector<string> lang;
 
+/*
         // default constructor
         Details()
         {
+            name="Unknown";
+            age=22;
+            cgpa=9;
+            lang={"English", "Hindi"};
             cout<< "I am a constructor "<< endl;
+        }
+*/
+        // parameter constructor
+        Details(string n, int a,float c,vector<string> l)
+        {
+            name=n;
+            age=a;
+            cgpa=c;
+            lang=l;
+            cout<< "Parameteric values have been set "<< endl;
         }
 
         // member function : methods
@@ -51,6 +66,7 @@ int main()
     */
 
     //constructor get called upon creating objects
-    Details det;
+    Details det("Harshit", 20, 7.99,{"Eng", "Hin"});
+    cout<<det.name;
     return 0;
 }
