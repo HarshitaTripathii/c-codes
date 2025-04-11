@@ -6,7 +6,10 @@ class Chai{
         int num;
     public:
         Chai(string n, int b): teaName(n), num(b){};    // another way of creating parametric constructor
+
         friend bool comparely(const Chai&c1, const Chai&c2);
+
+        Chai(string n): Chai(n, 1){};
 
         string getTeaName()
         {
@@ -28,7 +31,7 @@ class Chai{
         }
         void displayDet()
         {
-            cout<< "tea Name is "<< teaName<< endl;
+            cout<< "tea Name is "<< teaName<<"of number " << num<< endl;
         }
 };
 bool comparely(const Chai&c1, const Chai&c2)
@@ -40,6 +43,14 @@ int main(){
 
     Chai chai1("Masala", 4);
     Chai chai2("Lemon", 8);
+
+    /*
+    // Chai chai3("Ginger tea");  // will raise error, until deligating  constructor not present, see below, thats correct
+    Chai chai3("Ginger tea",4);
+    // chai3.setNum(3); // deligating  constructor has been constructed
+    */
+
+
     if(comparely(chai1, chai2))
     {
         cout<< "c1 has more num"<< endl;
@@ -49,6 +60,7 @@ int main(){
     {
         cout<< "c2 has more num"<< endl;
     }
+    chai3.displayDet();
 
    /*
     // error in code below is : this member is inaccessible,
