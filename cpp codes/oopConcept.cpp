@@ -33,7 +33,7 @@ class Details{
         }
 
         //copy constructor 
-        Details(Details& other)
+        Details(const Details& other)
         {
             name=new string(*other.name);
             age=other.age;
