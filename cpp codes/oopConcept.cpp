@@ -3,7 +3,9 @@ using namespace std;
 class Details{
     public:
         // data memebrs : attribute
-        string* name=new string;
+        // string* name=new string;
+        string* name;
+
         int age;
         float cgpa;
         vector<string> lang;
@@ -23,11 +25,22 @@ class Details{
         // parameter constructor
         Details(string n, int a,float c,vector<string> l)
         {
-            *name=n;
+            name=new string(n);
             age=a;
             cgpa=c;
             lang=l;
             cout<< "Parameteric values have been set "<< endl;
+        }
+
+        //copy constructor 
+        Details(Details& other)
+        {
+            name=new string(*other.name);
+            age=other.age;
+            cgpa=other.cgpa;
+            lang=other.lang;
+            cout<< "copy constructor run successfully"<< endl;
+
         }
 
         
@@ -85,7 +98,7 @@ int main()
     Details det("Harshit", 20, 7.99,{"Eng", "Hin"});
     det.displayEachDetail();
 
-    Details detail3=det;
+    Details detail3=det;   // This will call the copy constructor
     detail3.displayEachDetail();
 
 
