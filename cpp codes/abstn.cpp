@@ -2,9 +2,10 @@
 using namespace std;
 class Tea{
     public:
-        virtual void function1()=0;
+        virtual void function1()=0; 
         virtual void function2()=0;
         virtual void function3()=0;
+        // ADDING ATLEAST 1 VIRTUAL FUNCTION, MAKES THE CLASS ABSTRACT
 
         void makeTea()
         {
@@ -13,7 +14,7 @@ class Tea{
             function3();
         }
 };
-
+// DERIVED CLASS
 class GreenTea : public Tea
 {
     public:
@@ -31,7 +32,7 @@ int main()
 {
     GreenTea greenT;
     greenT.makeTea();
-    
+
 
     return 0;
 }
