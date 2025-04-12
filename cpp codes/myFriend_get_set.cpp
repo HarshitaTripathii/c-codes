@@ -9,7 +9,7 @@ class Chai{
 
         friend bool comparely(const Chai&c1, const Chai&c2);
 
-        Chai(string n): Chai(n, 1){};
+        Chai(string n): Chai(n, 1){};  // deligating constructor
 
         string getTeaName()
         {
